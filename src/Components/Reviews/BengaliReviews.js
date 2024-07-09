@@ -10,7 +10,7 @@ function BengaliReviews() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://run.mocky.io/v3/743f7da9-70d7-4528-833c-6d207fe09a5a');
+        const response = await fetch('https://run.mocky.io/v3/22e025b7-d2bc-4f91-a553-24d565b97931');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
