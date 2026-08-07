@@ -1,50 +1,42 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 
+function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
 
+  return (
+    <header className="modern-header">
+      <nav className="site-nav" aria-label="Main navigation">
+        <Link className="navbar-brand" to="/" onClick={closeMenu}>
+          <span className="brand-icon" aria-hidden="true">R</span>
+          <span className="brand-name">ReviewBaba</span>
+        </Link>
 
-function Header(){
-    const navColor ={
-        color : 'white',
-    }
-    return(
-      <nav className="navbar navbar-expand-lg navbar-light backgroundMood">
-      <a className="navbar-brand" href="#">Navbar</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+        <button
+          className={`menu-toggle ${isMenuOpen ? 'is-open' : ''}`}
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-controls="site-navigation"
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        >
+          <span></span><span></span><span></span>
+        </button>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <a className="nav-link" href="#">Home</a>
-          </li>
-          <li className="nav-item active">
-            <a className="nav-link" href="#">All movies</a>
-          </li>
-          {/* <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              All movies
-            </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="#">Drama</a>
-              <a className="dropdown-item" href="#">Comedy</a>
-              <a className="dropdown-item" href="#">Action</a>
-              <a className="dropdown-item" href="#">Romance</a>
-            </div>
-          </li> */}
-          <li className="nav-item active">
-            <a className="nav-link" href="#">Webseries</a>
-          </li>
-          <li className="nav-item active">
-            <a className="nav-link" href="#">About Me</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    )
+        <div className={`nav-menu ${isMenuOpen ? 'is-open' : ''}`} id="site-navigation">
+          <ul className="nav-list">
+            <li><NavLink end className="nav-link" to="/" onClick={closeMenu}>Home</NavLink></li>
+            <li><NavLink className="nav-link" to="/englishMov" onClick={closeMenu}>English</NavLink></li>
+            <li><NavLink className="nav-link" to="/bengaliMov" onClick={closeMenu}>Bengali</NavLink></li>
+            <li><NavLink className="nav-link" to="/hindiMov" onClick={closeMenu}>Hindi</NavLink></li>
+            <li><a className="nav-link nav-link--accent" href="#about" onClick={closeMenu}>About</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;

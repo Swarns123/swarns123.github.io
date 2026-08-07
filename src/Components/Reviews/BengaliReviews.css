@@ -13,11 +13,33 @@ img {
     background-size: cover;
     background-attachment: scroll;
     position: relative;
+    min-height: 85vh;
 }
 
-.reviewButton{
-    color: white;
+
+.reviewButton {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #d4172d; /* Bootstrap primary */
+    color: #fff;
     text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Hover */
+.reviewButton:hover {
+    background-color: #d4172d !important;
+    color: #fff !important;
+}
+
+/* Click effect */
+.reviewButton:active {
+    transform: scale(0.97);
 }
 
 .content {
@@ -27,17 +49,49 @@ img {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 90%; 
-    max-width: 350px; 
-    height: 70vh;
-    border-radius: 6px;
-    padding: 2rem;
-    color: #aaa;
-    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.2),
-        0 0 1rem rgba(0, 0, 0, 0.2);
+
+    width: 90%;
+    max-width: 350px;
+
+    min-height: 250px;
+    height: auto;
+
+    border-radius: 16px;
+    padding: 1.4rem;
+
+    /* 🔥 Deep glass background */
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.10),
+        rgba(255, 255, 255, 0.03)
+    );
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    /* 🔥 Premium border */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: #f1f1f1;
+
+    /* 🔥 Depth shadow */
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
     overflow: hidden;
+
+    transition: all 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .card__image-container {
@@ -50,19 +104,28 @@ img {
 }
 
 .card__image {
-    opacity: 0;
-    animation: ImageFadeIn .8s 1.4s forwards;
-    max-width: 100%; /* Added to ensure image responsiveness */
+    width: 100%;
+    height: 26rem;        /* 🔥 fixed height */
+    object-fit: cover;    /* 🔥 keeps aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .card__image {
+        width: 100%;
+        height: 300px;    /* mobile */
+        object-fit: cover; 
+    }
 }
 
 .card__title {
-    color: white;
+    color: rgb(255, 2, 2);
     margin-top: 0;
     font-weight: 800;
     letter-spacing: 0.01em;
 }
 
 .card__content {
+    flex-grow: 1;
     margin-top: -1rem;
     opacity: 0;
     animation: ContentFadeIn .8s 1.6s forwards;
@@ -76,16 +139,17 @@ img {
 }
 
 .bottom-button {
-    position: absolute;
-    bottom: 10%; /* Changed to percentage */
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 1.5vh 3vw; /* Adjusted padding using viewport units */
-    background-color: #007bff;
-    color: #fff;
+    margin-top: auto;   /* pushes button to bottom */
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+}
+
+.bottom-button:hover{
+    background-color: #d4172d;
+    border-radius: 10px
 }
 
 @keyframes LineFadeIn {
