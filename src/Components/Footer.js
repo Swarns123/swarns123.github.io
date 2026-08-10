@@ -6,7 +6,7 @@ function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="modern-footer">
+    <footer className="modern-footer" id="about">
       <div className="footer-content">
         <div className="footer-intro">
           <Link className="footer-brand" to="/"><span aria-hidden="true">R</span> ReviewBaba</Link>

@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import { Link, NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    closeMenu();
+  }, [location.pathname]);
 
   return (
     <header className="modern-header">
       <nav className="site-nav" aria-label="Main navigation">
-        <Link className="navbar-brand" to="/" onClick={closeMenu}>
+        <Link className="site-brand" to="/" onClick={closeMenu}>
           <span className="brand-icon" aria-hidden="true">R</span>
           <span className="brand-name">ReviewBaba</span>
         </Link>
@@ -27,11 +32,11 @@ function Header() {
 
         <div className={`nav-menu ${isMenuOpen ? 'is-open' : ''}`} id="site-navigation">
           <ul className="nav-list">
-            <li><NavLink end className="nav-link" to="/" onClick={closeMenu}>Home</NavLink></li>
-            <li><NavLink className="nav-link" to="/englishMov" onClick={closeMenu}>English</NavLink></li>
-            <li><NavLink className="nav-link" to="/bengaliMov" onClick={closeMenu}>Bengali</NavLink></li>
-            <li><NavLink className="nav-link" to="/hindiMov" onClick={closeMenu}>Hindi</NavLink></li>
-            <li><a className="nav-link nav-link--accent" href="#about" onClick={closeMenu}>About</a></li>
+            <li><NavLink end className="site-link" to="/">Home</NavLink></li>
+            <li><NavLink className="site-link" to="/englishMov">English</NavLink></li>
+            <li><NavLink className="site-link" to="/bengaliMov">Bengali</NavLink></li>
+            <li><NavLink className="site-link" to="/hindiMov">Hindi</NavLink></li>
+            <li><a className="site-link site-link--accent" href="#about" onClick={closeMenu}>About</a></li>
           </ul>
         </div>
       </nav>
