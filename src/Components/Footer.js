@@ -20,8 +20,13 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>&copy; {new Date().getFullYear()} ReviewBaba</span>
-        <button className="back-to-top" type="button" onClick={scrollToTop} aria-label="Back to top">Back to top <span aria-hidden="true">↑</span></button>
+        <div className="footer-credit">
+          <span className="footer-copyright">&copy; {new Date().getFullYear()} ReviewBaba</span>
+          <span className="footer-credit-divider" aria-hidden="true"></span>
+          <span className="footer-credit-label">Owned, developed &amp; maintained by</span>
+          <span className="footer-credit-name">Swarnendu Saha</span>
+        </div>
+        <button className="back-to-top" type="button" onClick={scrollToTop} aria-label="Back to top">Back to top <span aria-hidden="true">&uarr;</span></button>
       </div>
     </footer>
   );
